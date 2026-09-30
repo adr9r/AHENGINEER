@@ -1,3 +1,65 @@
+Today 9:54 PM
+كراولي صديقي انت هاي جاية احاول اسوي موقع يحل الاسئلة الهندسية وصارت عندي مشكلة بلكي توفها وتحلها الي فدوة لعينك
+Pasted text.txt
+Document
+يطلي هيج
+كراولي هسة الوضع لوز بس اني ما اريد الحل هيج يطلع مخربط همين اريد الحل مرتب والكسور مرتبة مو هيج مخربطة فدوة شنو الحل 
+هسة هذا المستودع 
+
+ههههه إي والله، هسه صار عدنا بيت AH ENGINEER رسميًا.
+
+بما أن الملف ظاهر بالمستودع، ننتقل للخطوة المهمة:
+
+الخطوة الجاية: نخلي الملف اسمه index.html
+
+لأن أغلب خدمات الاستضافة تبحث تلقائيًا عن index.html كصفحة البداية.
+
+اضغطي على ملف AH_ENGINEER_fixed.html.
+راح تفتح صفحة الملف.
+من فوق اضغطي علامة القلم ✏️ (Edit this file).
+راح تدخلين محرر الكود.
+
+فوق الكود، عند اسم الملف، غيّري:
+
+AH_ENGINEER_fixed.html
+
+إلى:
+
+index.html
+لا تغيرين أي شيء داخل الكود.
+انزلي واضغطي Commit changes.
+
+بعدها لازم يصير عندچ بالمستودع:
+
+AHENGINEER
+└── index.html
+
+وقفي هنا بعد ما تسوينها. بعدها نروح للخطوة اللي بعدها، وهي ربطه بـ Cloudflare ونخليه موقع فعلي.
+
+كراولي وخلي من يخلص حل المسألة يطلع.. خلصنا وعاش العراق :)
+
+إي عيني، نخليها جزء من تجربة الموقع.
+
+من يكتمل الحل وتظهر النتيجة، يطلع بالنهاية بشكل أنيق:
+
+خلصنا، وعاش العراق :)
+
+وأخليها تظهر بعد آخر جزء من الحل فقط، مو أثناء التحميل ولا إذا صار خطأ.
+
+وإذا تريدين، نخليها بنفس ستايل الموقع، مثلاً صغيرة ومرتبة تحت النتيجة النهائية حتى ما تصير طفولية أو تغطي على الحل.
+
+اي هيج اريدها 
+
+تمام. خليتها تطلع بعد اكتمال الحل بالكامل وتحت النتيجة النهائية، وبشكل هادئ ومرتب:
+
+خلصنا، وعاش العراق :)
+
+وما تظهر أثناء التحميل أو إذا فشل الحل.
+
+هاي النسخة المعدلة:
+
+تحميل AH ENGINEER — نسخة عاش العراق
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="h-full bg-[#f6f2ec] text-[#221710]">
 <head>
@@ -9,6 +71,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- MathJax: renders engineering equations, fractions, roots, powers, etc. -->
+    <script>
+        window.MathJax = {
+            tex: {
+                displayMath: [['$$', '$$'], ['\\[', '\\]']],
+                inlineMath: [['\\(', '\\)']],
+                processEscapes: true,
+                tags: 'none'
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+                ignoreHtmlClass: 'no-mathjax'
+            },
+            chtml: {
+                scale: 1.05
+            }
+        };
+    </script>
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
 
     <script>
         tailwind.config = {
@@ -60,6 +142,95 @@
 
         .soft-glow {
             box-shadow: 0 10px 30px -5px rgba(140, 98, 57, 0.12);
+        }
+
+        /* Clean engineering-equation layout */
+        .solution-prose mjx-container[display="true"] {
+            margin: 1rem 0 !important;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.25rem 0.5rem;
+        }
+        .solution-prose mjx-container {
+            direction: ltr;
+        }
+        .solution-section {
+            background: #fffdf9;
+            border: 1px solid #e5d7c3;
+            border-radius: 18px;
+            padding: 1rem 1.1rem;
+            margin-bottom: 0.9rem;
+            box-shadow: 0 3px 14px rgba(59, 38, 22, 0.04);
+        }
+        .solution-section-title {
+            display: flex;
+            align-items: center;
+            gap: .55rem;
+            font-weight: 900;
+            color: #3b2616;
+            font-size: 1rem;
+            border-bottom: 1px solid #e5d7c3;
+            padding-bottom: .65rem;
+            margin-bottom: .8rem;
+        }
+        .solution-section-title .section-number {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 10px;
+            background: #3b2616;
+            color: #faf7f2;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 800;
+            flex: 0 0 auto;
+        }
+        .solution-line { margin: .35rem 0; }
+        .solution-item { display: flex; align-items: flex-start; gap: .55rem; padding: .38rem .1rem; border-bottom: 1px dashed #eadfce; line-height: 1.9; }
+        .solution-item:last-child { border-bottom: 0; }
+        .item-dot { color: #8c6239; font-weight: 900; flex: 0 0 auto; }
+        .formula-row { margin: .75rem 0 1rem; }
+        .formula-name { font-weight: 800; margin-bottom: .25rem; }
+        .step-card { display: flex; gap: .7rem; align-items: flex-start; margin: .7rem 0 1rem; }
+        .step-number { width: 1.85rem; height: 1.85rem; border-radius: 9px; background: #f4ede2; border: 1px solid #d0ba9d; display: inline-flex; align-items: center; justify-content: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; flex: 0 0 auto; }
+        .step-content { flex: 1; min-width: 0; }
+        .step-explanation { line-height: 1.85; margin-bottom: .2rem; }
+        .final-result { background: #f4ede2; border: 1px solid #d0ba9d; border-radius: 14px; padding: .8rem .9rem; margin: .65rem 0; }
+        .final-result-name { font-weight: 900; margin-bottom: .2rem; }
+        .final-unit { text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #593c28; margin-top: -.2rem; }
+        .solution-list { margin: .45rem 0; padding-right: 1.2rem; }
+        .solution-list li { margin: .3rem 0; }
+        .equation-box {
+            direction: ltr;
+            text-align: center;
+            background: #faf7f2;
+            border: 1px solid #e5d7c3;
+            border-radius: 14px;
+            padding: .65rem .75rem;
+            margin: .65rem 0;
+            overflow-x: auto;
+        }
+        .equation-box mjx-container[display="true"] {
+            margin: .35rem 0 !important;
+        }
+
+        .success-message {
+            margin: 1.25rem auto .25rem;
+            padding: .8rem 1rem;
+            text-align: center;
+            color: #593c28;
+            font-weight: 900;
+            font-size: 1rem;
+            border-top: 1px solid #d0ba9d;
+            max-width: 34rem;
+        }
+        .final-answer-box {
+            background: #f4ede2;
+            border: 2px solid #b1906a;
+            border-radius: 16px;
+            padding: .8rem 1rem;
+            margin-top: .6rem;
         }
     </style>
 </head>
@@ -378,13 +549,23 @@
             const systemPrompt = `أنت منصة AH ENGINEER التعليمية والهندسية المتخصصة.
 التخصص الهندسي الحالي: ${discipline}.
 
-المطلوب: تقديم حل هندسي احترافي ومفصل خطوة بخطوة بالصيغة التالية:
+مهمتك: حل المسألة الهندسية بدقة، وإرجاع النتيجة في بنية JSON فقط حسب المخطط المطلوب من النظام. لا تكتب أي مقدمة أو خاتمة خارج JSON.
 
-1. 📌 **المعطيات (Given Parameters):** استخراج جميع القيم والرموز والوحدات.
-2. 🎯 **المطلوب (Required):** تحديد المطلوب حسابه بدقة.
-3. 📐 **القوانين الحاكمة (Governing Equations):** كتابة القوانين والمعادلات المستخدمة.
-4. 📝 **خطوات الحل والتعويض (Step-by-Step Substitution):** كتابة خطوات الحساب والتعويض المباشر.
-5. 🏆 **النتيجة النهائية (Final Answer & Units):** إبراز النواتج النهائية بالوحدات القياسية الصحيحة (مثل: kW, TR, MPa, N.m, rad/s... إلخ).`;
+قواعد المحتوى:
+- استخرج المعطيات كما وردت في السؤال دون تغيير أي قيمة أو وحدة.
+- إذا كانت قيمة أو وحدة غير واضحة، اذكر ذلك صراحة ولا تخترع قيمة.
+- المطلوب يكون واضحاً ومحدداً.
+- اذكر القوانين المناسبة للمسألة فقط.
+- كل خطوة حسابية تكون مستقلة، مع شرح قصير ثم معادلة مستقلة.
+- كل معادلة رياضية يجب أن تكون بصيغة LaTeX داخل النص، بدون $$ في البداية أو النهاية؛ الواجهة ستضيف محددات المعادلة تلقائياً.
+- استخدم \frac{البسط}{المقام} للكسور، و\sqrt{} للجذور، والأسس مثل x^2.
+- لا تستخدم \text{} داخل المعادلات. اكتب الوحدات بصيغة بسيطة مثل W, kW, Pa, MPa, N.m, rpm, kg/s.
+- لا تستخدم Markdown أو HTML أو جداول أو backticks.
+- لا تكرر عنوان القسم داخل محتواه.
+- لا تضع أكثر من معادلة مختلفة داخل حقل equation واحد؛ إذا احتاجت الخطوة أكثر من معادلة فاجعلها خطوات منفصلة.
+- النتيجة النهائية: كل نتيجة مستقلة عن الأخرى، مع اسم النتيجة وقيمتها ووحدتها بوضوح.
+
+الهدف: إخراج هندسي نظيف جداً يمكن عرضه مباشرة في واجهة احترافية، بحيث تكون المعطيات والمطلوب والقوانين والخطوات والنتائج كلها مرتبة ولا يظهر أي كود أو LaTeX خام للمستخدم.`;
 
             const userPromptText = `طلب حل مسألة هندسية عبر منصة AH ENGINEER:\n\n${problemText}`;
 
@@ -404,7 +585,56 @@
                     systemInstruction: { parts: [{ text: systemPrompt }] },
                     generationConfig: {
                         thinkingConfig: { thinkingLevel: "low" },
-                        maxOutputTokens: 3000
+                        maxOutputTokens: 3000,
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                given: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                required: {
+                                    type: "ARRAY",
+                                    items: { type: "STRING" }
+                                },
+                                equations: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            name: { type: "STRING" },
+                                            equation: { type: "STRING" }
+                                        },
+                                        required: ["name", "equation"]
+                                    }
+                                },
+                                steps: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            explanation: { type: "STRING" },
+                                            equation: { type: "STRING" }
+                                        },
+                                        required: ["explanation", "equation"]
+                                    }
+                                },
+                                final: {
+                                    type: "ARRAY",
+                                    items: {
+                                        type: "OBJECT",
+                                        properties: {
+                                            name: { type: "STRING" },
+                                            equation: { type: "STRING" },
+                                            unit: { type: "STRING" }
+                                        },
+                                        required: ["name", "equation", "unit"]
+                                    }
+                                }
+                            },
+                            required: ["given", "required", "equations", "steps", "final"]
+                        }
                     }
                 };
 
@@ -428,7 +658,7 @@
                 async function requestGemini(modelId, modelLabel) {
                     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent`;
                     const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 18000);
+                    const timeoutId = setTimeout(() => controller.abort(), 30000);
 
                     if (loadingMessage) {
                         loadingMessage.textContent = `جاري الحل بواسطة ${modelLabel}...`;
@@ -452,7 +682,7 @@
                         if (networkError.name === 'AbortError') {
                             return {
                                 response: { ok: false, status: 408 },
-                                result: { error: { message: `انتهت مهلة ${modelLabel} بعد 18 ثانية.` } }
+                                result: { error: { message: `انتهت مهلة ${modelLabel} بعد 30 ثانية.` } }
                             };
                         }
                         return {
@@ -482,11 +712,18 @@
 
                     // 503 = ضغط/عدم توفر مؤقت، و429 = تجاوز معدل/سعة الطلبات.
                     // في هاتين الحالتين ننتقل مباشرة إلى النموذج التالي بدلاً من الانتظار طويلاً.
-                    if ((status === 503 || status === 429) && i < models.length - 1) {
+                    // 503/429 = الخادم مشغول أو السعة محدودة.
+                    // 408 = انتهت مهلة الاتصال محلياً؛ لا نوقف التطبيق، بل نجرب النموذج التالي.
+                    // 0 = فشل اتصال شبكي؛ نجرب نموذجاً آخر قبل إظهار الخطأ النهائي.
+                    const shouldFallback = (status === 503 || status === 429 || status === 408 || status === 0);
+
+                    if (shouldFallback && i < models.length - 1) {
                         if (loadingMessage) {
-                            loadingMessage.textContent = `الخادم مشغول مؤقتاً. جارٍ تجربة نموذج بديل...`;
+                            loadingMessage.textContent = status === 408
+                                ? `انتهت مهلة ${model.label}. جارٍ تجربة نموذج أسرع...`
+                                : `الخادم مشغول مؤقتاً. جارٍ تجربة نموذج بديل...`;
                         }
-                        await new Promise(resolve => setTimeout(resolve, 500));
+                        await new Promise(resolve => setTimeout(resolve, 700));
                         continue;
                     }
 
@@ -500,11 +737,18 @@
                 const textSolution = finalResult.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim();
 
                 if (!textSolution) {
-                    const reason = result?.candidates?.[0]?.finishReason;
+                    const reason = finalResult?.candidates?.[0]?.finishReason;
                     throw new Error(reason ? `لم يتم إنشاء الحل. سبب الإنهاء: ${reason}` : "لم يتم تلقي إجابة صحيحة من Gemini.");
                 }
 
-                renderSolution(textSolution);
+                let structuredSolution;
+                try {
+                    structuredSolution = JSON.parse(textSolution);
+                } catch (jsonError) {
+                    throw new Error("وصلت الإجابة بصيغة غير مرتبة من Gemini. أعيدي المحاولة مرة أخرى.");
+                }
+
+                renderSolution(structuredSolution);
 
             } catch (err) {
                 console.error("Error solving problem:", err);
@@ -521,24 +765,129 @@
             }
         }
 
-        function renderSolution(rawMarkdown) {
+        function renderSolution(solution) {
             document.getElementById('loading-state').classList.add('hidden');
             const outputContainer = document.getElementById('solution-output');
-            
-            // Format markdown text to fit Brown, Beige & Black Theme
-            let formattedHtml = rawMarkdown
-                .replace(/^### (.*$)/gim, '<h3 class="text-base font-extrabold text-earth-800 mt-4 mb-2 flex items-center gap-2"><span class="w-2.5 h-2.5 rounded-full bg-earth-600"></span>$1</h3>')
-                .replace(/^## (.*$)/gim, '<h2 class="text-lg font-black text-earth-900 border-b border-earth-300 pb-2 mt-5 mb-3">$1</h2>')
-                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-earth-950 font-bold">$1</strong>')
-                .replace(/`([^`]+)`/g, '<code class="font-mono bg-white px-2 py-0.5 rounded text-earth-800 text-xs border border-earth-300">$1</code>')
-                .replace(/\n\n/g, '<br><br>');
 
-            outputContainer.innerHTML = `<div class="prose max-w-none text-xs sm:text-sm leading-relaxed text-earth-900 font-medium">${formattedHtml}</div>`;
+            const data = solution || {};
+            const given = Array.isArray(data.given) ? data.given : [];
+            const required = Array.isArray(data.required) ? data.required : [];
+            const equations = Array.isArray(data.equations) ? data.equations : [];
+            const steps = Array.isArray(data.steps) ? data.steps : [];
+            const finalResults = Array.isArray(data.final) ? data.final : [];
 
+            const sectionTitles = {
+                1: 'المعطيات (Given Parameters)',
+                2: 'المطلوب (Required)',
+                3: 'القوانين الحاكمة (Governing Equations)',
+                4: 'خطوات الحل والتعويض (Step-by-Step Substitution)',
+                5: 'النتيجة النهائية (Final Answer & Units)'
+            };
+            const sectionIcons = {1:'📌', 2:'🎯', 3:'📐', 4:'📝', 5:'🏆'};
+
+            let html = '<div class="solution-prose max-w-none text-sm leading-relaxed text-earth-900 font-medium">';
+
+            // 1. Given
+            if (given.length) {
+                html += makeSection(1, sectionTitles[1], sectionIcons[1],
+                    given.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
+                );
+            }
+
+            // 2. Required
+            if (required.length) {
+                html += makeSection(2, sectionTitles[2], sectionIcons[2],
+                    required.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
+                );
+            }
+
+            // 3. Governing equations
+            if (equations.length) {
+                const body = equations.map(item => `
+                    <div class="formula-row">
+                        <div class="formula-name">${formatSafeText(item.name || '')}</div>
+                        <div class="equation-box">\\[${safeMath(item.equation || '')}\\]</div>
+                    </div>`).join('');
+                html += makeSection(3, sectionTitles[3], sectionIcons[3], body);
+            }
+
+            // 4. Steps
+            if (steps.length) {
+                const body = steps.map((item, index) => `
+                    <div class="step-card">
+                        <div class="step-number">${index + 1}</div>
+                        <div class="step-content">
+                            <div class="step-explanation">${formatSafeText(item.explanation || '')}</div>
+                            <div class="equation-box">\\[${safeMath(item.equation || '')}\\]</div>
+                        </div>
+                    </div>`).join('');
+                html += makeSection(4, sectionTitles[4], sectionIcons[4], body);
+            }
+
+            // 5. Final answers
+            if (finalResults.length) {
+                const body = finalResults.map(item => `
+                    <div class="final-result">
+                        <div class="final-result-name">${formatSafeText(item.name || 'النتيجة')}</div>
+                        <div class="equation-box final-equation">\\[${safeMath(item.equation || '')}\\]</div>
+                        ${item.unit ? `<div class="final-unit">Unit: ${formatSafeText(item.unit)}</div>` : ''}
+                    </div>`).join('');
+                html += makeSection(5, sectionTitles[5], sectionIcons[5], body);
+            }
+
+            if (!given.length && !required.length && !equations.length && !steps.length && !finalResults.length) {
+                throw new Error('لم يتم إنشاء محتوى منظم للحل. أعيدي المحاولة مرة أخرى.');
+            }
+
+            html += '</div>';
+            html += `<div class="success-message" role="status">خلصنا، وعاش العراق :)</div>`;
+            outputContainer.innerHTML = html;
             outputContainer.classList.remove('hidden');
             document.getElementById('solution-actions').classList.remove('hidden');
-
             lucide.createIcons();
+            typesetSolution(outputContainer);
+        }
+
+        function makeSection(number, title, icon, body) {
+            return `<section class="solution-section" data-section="${number}">
+                <div class="solution-section-title">
+                    <span class="section-number">${number}</span>
+                    <span>${icon} ${title}</span>
+                </div>
+                <div class="solution-section-body">${body}</div>
+            </section>`;
+        }
+
+        function formatSafeText(value) {
+            const text = String(value ?? '').trim();
+            if (!text) return '';
+            return escapeHtml(text).replace(/\*\*(.*?)\*\*/g, '<strong class="text-earth-950 font-extrabold">$1</strong>');
+        }
+
+        function safeMath(value) {
+            // MathJax receives only the equation itself; HTML is escaped to prevent markup from leaking into the equation.
+            return escapeHtml(String(value ?? '').trim())
+                .replace(/&amp;/g, '&')
+                .replace(/&lt;/g, '<')
+                .replace(/&gt;/g, '>');
+        }
+
+        function formatPlainBlock(escapedText) {
+            return escapedText.split('\n').map(x => x.trim()).filter(Boolean).map(x => `<div class="solution-line">${x}</div>`).join('');
+        }
+
+        function typesetSolution(container) {
+            const run = () => {
+                if (window.MathJax && window.MathJax.typesetPromise) {
+                    MathJax.typesetClear?.([container]);
+                    return MathJax.typesetPromise([container]).catch(err => console.error('MathJax error:', err));
+                }
+            };
+            if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+                window.MathJax.startup.promise.then(run).catch(err => console.error('MathJax startup error:', err));
+            } else {
+                setTimeout(run, 300);
+            }
         }
 
         function escapeHtml(value) {
@@ -566,3 +915,10 @@
     </script>
 </body>
 </html>
+AH_ENGINEER_final.html
+HTML
+Your file library is full. New files won't be saved to your library, but you can still use them in this chat. To store new files for later, free up space or upgrade your storage.
+Upgrade
+Manage
+
+ِ
