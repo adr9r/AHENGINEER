@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- MathJax: renders engineering equations, fractions, roots, powers, etc. -->
+    <!-- MathJax: renders engineering equations -->
     <script>
         window.MathJax = {
             tex: {
@@ -23,9 +23,7 @@
                 skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
                 ignoreHtmlClass: 'no-mathjax'
             },
-            chtml: {
-                scale: 1.05
-            }
+            chtml: { scale: 1.05 }
         };
     </script>
     <script async src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
@@ -36,17 +34,9 @@
                 extend: {
                     colors: {
                         earth: {
-                            50: '#faf7f2',   // Warm Light Beige
-                            100: '#f4ede2',  // Cream Beige
-                            200: '#e5d7c3',  // Soft Beige
-                            300: '#d0ba9d',  // Medium Beige Accent
-                            400: '#b1906a',  // Bronze Beige
-                            500: '#8c6239',  // Warm Rich Brown
-                            600: '#734d2a',  // Deep Saddle Brown
-                            700: '#593c28',  // Dark Espresso Brown
-                            800: '#3b2616',  // Black-Brown
-                            900: '#221710',  // Near Black
-                            950: '#140c08'   // Deep Onyx Black
+                            50: '#faf7f2', 100: '#f4ede2', 200: '#e5d7c3', 300: '#d0ba9d',
+                            400: '#b1906a', 500: '#8c6239', 600: '#734d2a', 700: '#593c28',
+                            800: '#3b2616', 900: '#221710', 950: '#140c08'
                         }
                     },
                     fontFamily: {
@@ -61,7 +51,6 @@
         body { font-family: 'Cairo', sans-serif; }
         .font-latin { font-family: 'Plus Jakarta Sans', sans-serif; }
         
-        /* Custom scrollbar matching brown & beige theme */
         ::-webkit-scrollbar { width: 7px; height: 7px; }
         ::-webkit-scrollbar-track { background: #f4ede2; }
         ::-webkit-scrollbar-thumb { background: #b1906a; border-radius: 6px; }
@@ -73,25 +62,17 @@
             box-shadow: 0 4px 20px -2px rgba(59, 38, 22, 0.05);
         }
 
-        .brown-card {
-            background-color: #3b2616;
-            color: #faf7f2;
-        }
-
         .soft-glow {
             box-shadow: 0 10px 30px -5px rgba(140, 98, 57, 0.12);
         }
 
-        /* Clean engineering-equation layout */
         .solution-prose mjx-container[display="true"] {
             margin: 1rem 0 !important;
             overflow-x: auto;
             overflow-y: hidden;
             padding: 0.25rem 0.5rem;
         }
-        .solution-prose mjx-container {
-            direction: ltr;
-        }
+        .solution-prose mjx-container { direction: ltr; }
         .solution-section {
             background: #fffdf9;
             border: 1px solid #e5d7c3;
@@ -124,7 +105,6 @@
             font-weight: 800;
             flex: 0 0 auto;
         }
-        .solution-line { margin: .35rem 0; }
         .solution-item { display: flex; align-items: flex-start; gap: .55rem; padding: .38rem .1rem; border-bottom: 1px dashed #eadfce; line-height: 1.9; }
         .solution-item:last-child { border-bottom: 0; }
         .item-dot { color: #8c6239; font-weight: 900; flex: 0 0 auto; }
@@ -137,8 +117,6 @@
         .final-result { background: #f4ede2; border: 1px solid #d0ba9d; border-radius: 14px; padding: .8rem .9rem; margin: .65rem 0; }
         .final-result-name { font-weight: 900; margin-bottom: .2rem; }
         .final-unit { text-align: center; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; color: #593c28; margin-top: -.2rem; }
-        .solution-list { margin: .45rem 0; padding-right: 1.2rem; }
-        .solution-list li { margin: .3rem 0; }
         .equation-box {
             direction: ltr;
             text-align: center;
@@ -149,9 +127,7 @@
             margin: .65rem 0;
             overflow-x: auto;
         }
-        .equation-box mjx-container[display="true"] {
-            margin: .35rem 0 !important;
-        }
+        .equation-box mjx-container[display="true"] { margin: .35rem 0 !important; }
 
         .success-message {
             margin: 1.25rem auto .25rem;
@@ -169,30 +145,26 @@
 
     <header class="bg-earth-900 text-earth-50 border-b border-earth-800 sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Branding -->
             <div class="flex items-center gap-3.5">
                 <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-earth-300 via-earth-400 to-earth-600 flex items-center justify-center text-earth-950 font-black text-xl font-latin shadow-lg shadow-earth-900/40 border border-earth-200">
                     AH
                 </div>
                 <div>
-                    <h1 class="text-2xl font-black tracking-wider text-earth-100 font-latin">
-                        AH ENGINEER
-                    </h1>
+                    <h1 class="text-2xl font-black tracking-wider text-earth-100 font-latin">AH ENGINEER</h1>
                     <p class="text-xs font-semibold text-earth-300">المساعد الهندسي لحل المسائل والمفاهيم</p>
                 </div>
             </div>
 
-            <div class="flex items-center gap-2 text-xs font-bold text-earth-300 bg-earth-800 px-3 py-1.5 rounded-xl border border-earth-700">
+            <div class="flex items-center gap-2 text-xs font-bold text-earth-300 bg-earth-800 px-3.5 py-2 rounded-xl border border-earth-700">
                 <i data-lucide="sparkles" class="w-4 h-4 text-earth-400"></i>
-                <span>جاهز للحل المباشر</span>
+                <span>حل مباشر 100%</span>
             </div>
         </div>
     </header>
 
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
 
-        <!-- Left Column: Inputs & Controls -->
+        <!-- Left Column -->
         <section class="lg:col-span-5 flex flex-col gap-6">
             
             <!-- Discipline Selector -->
@@ -237,57 +209,58 @@
                 </div>
             </div>
 
-            <!-- Problem Inputs Box -->
-            <div class="beige-card rounded-2xl p-5 soft-glow flex flex-col gap-4">
-                
-                <!-- Text Area -->
-                <div>
-                    <label class="block text-xs font-extrabold text-earth-800 uppercase tracking-wider mb-2">نص السؤال أو المسألة</label>
-                    <textarea id="problem-text" rows="5" placeholder="اكتبي المعطيات والمطلوب هنا باللغة العربية أو الإنجليزية..." class="w-full bg-white border border-earth-300 rounded-xl p-3.5 text-sm font-semibold text-earth-900 placeholder-earth-400 focus:outline-none focus:border-earth-600 transition resize-none shadow-sm"></textarea>
-                </div>
+            <!-- Unified Single Input Container -->
+            <div class="beige-card rounded-2xl p-5 soft-glow flex flex-col gap-3">
+                <label class="block text-xs font-extrabold text-earth-800 uppercase tracking-wider flex items-center justify-between">
+                    <span>إدخال السؤال أو المسألة</span>
+                    <span class="text-[10px] text-earth-600 font-normal">كتابة، إرفاق ملف، أو لصق صورة مباشر (Ctrl+V)</span>
+                </label>
 
-                <!-- Image Upload -->
-                <div>
-                    <label class="block text-xs font-extrabold text-earth-800 uppercase tracking-wider mb-2">صورة السؤال (كتاب، ملزمة، ورقة)</label>
+                <!-- Unified Input Area Box -->
+                <div class="relative bg-white border border-earth-300 rounded-xl p-3 flex flex-col gap-2 focus-within:border-earth-600 focus-within:ring-1 focus-within:ring-earth-600 transition shadow-sm">
                     
-                    <div id="drop-zone" class="relative border-2 border-dashed border-earth-300 hover:border-earth-600 rounded-xl p-4 text-center bg-white hover:bg-earth-50 transition cursor-pointer group">
-                        <input type="file" id="image-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full z-10" onchange="handleImageSelect(event)">
-                        
-                        <div id="upload-placeholder" class="flex flex-col items-center justify-center gap-2 py-1">
-                            <i data-lucide="upload-cloud" class="w-8 h-8 text-earth-500 group-hover:scale-110 transition"></i>
-                            <p class="text-xs text-earth-800 font-bold">اضغطي لرفع الصورة أو اسحبيها هنا</p>
-                            <p class="text-[11px] text-earth-500 font-semibold">PNG, JPG, WEBP</p>
-                        </div>
+                    <!-- Text Area -->
+                    <textarea id="problem-text" rows="5" placeholder="اكتبي نص السؤال هنا، أو الصقي صورة المسألة مباشرة (Ctrl+V)..." class="w-full bg-transparent text-sm font-semibold text-earth-900 placeholder-earth-400 focus:outline-none resize-none" onpaste="handlePaste(event)"></textarea>
 
-                        <!-- Image Preview -->
-                        <div id="image-preview-container" class="hidden relative flex items-center justify-between bg-earth-100 border border-earth-300 rounded-xl p-2.5">
-                            <div class="flex items-center gap-3 overflow-hidden">
-                                <img id="image-preview" src="" alt="Preview" class="w-12 h-12 object-cover rounded-lg border border-earth-300">
-                                <div class="text-right truncate">
-                                    <p id="image-filename" class="text-xs font-bold text-earth-900 truncate">image.jpg</p>
-                                    <p id="image-filesize" class="text-[10px] font-bold text-earth-600">0 KB</p>
-                                </div>
+                    <!-- Image Preview Badge (If attached) -->
+                    <div id="image-preview-container" class="hidden relative flex items-center justify-between bg-earth-100 border border-earth-300 rounded-lg p-2 mt-1">
+                        <div class="flex items-center gap-2.5 overflow-hidden">
+                            <img id="image-preview" src="" alt="Preview" class="w-10 h-10 object-cover rounded-md border border-earth-300">
+                            <div class="text-right truncate">
+                                <p id="image-filename" class="text-xs font-bold text-earth-900 truncate">image.jpg</p>
+                                <p id="image-filesize" class="text-[10px] font-bold text-earth-600">0 KB</p>
                             </div>
-                            <button type="button" onclick="clearImage(event)" class="p-1.5 bg-white hover:bg-red-50 text-earth-700 hover:text-red-600 rounded-lg border border-earth-300 transition z-20">
-                                <i data-lucide="trash-2" class="w-4 h-4"></i>
-                            </button>
                         </div>
+                        <button type="button" onclick="clearImage(event)" class="p-1 bg-white hover:bg-red-50 text-earth-700 hover:text-red-600 rounded-md border border-earth-300 transition">
+                            <i data-lucide="x" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+
+                    <!-- Bottom Input Toolbar -->
+                    <div class="flex items-center justify-between border-t border-earth-200 pt-2 mt-1">
+                        <input type="file" id="image-input" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
+                        
+                        <button type="button" onclick="document.getElementById('image-input').click()" class="px-3 py-1.5 bg-earth-100 hover:bg-earth-200 border border-earth-300 text-earth-800 rounded-lg text-xs font-bold flex items-center gap-1.5 transition">
+                            <i data-lucide="paperclip" class="w-4 h-4 text-earth-600"></i>
+                            <span>إرفاق صورة أو ورقة</span>
+                        </button>
+
+                        <span class="text-[11px] text-earth-500 font-semibold">PNG, JPG, WEBP</span>
                     </div>
                 </div>
 
                 <!-- Solve Button -->
-                <button id="solve-btn" onclick="solveProblem()" class="w-full mt-2 py-4 px-4 bg-earth-800 hover:bg-earth-900 text-earth-50 font-black text-sm rounded-xl shadow-lg shadow-earth-900/20 active:scale-[0.99] transition flex items-center justify-center gap-2.5 tracking-wide">
+                <button id="solve-btn" onclick="solveProblem()" class="w-full mt-1 py-4 px-4 bg-earth-800 hover:bg-earth-900 text-earth-50 font-black text-sm rounded-xl shadow-lg shadow-earth-900/20 active:scale-[0.99] transition flex items-center justify-center gap-2.5 tracking-wide">
                     <i data-lucide="calculator" class="w-5 h-5 text-earth-300"></i>
                     <span>حـل المـسـألـة الآن (AH ENGINEER)</span>
                 </button>
             </div>
         </section>
 
-        <!-- Right Column: Solution Output Area -->
+        <!-- Right Column -->
         <section class="lg:col-span-7 flex flex-col">
             <div class="beige-card rounded-2xl p-6 soft-glow flex-1 flex flex-col min-h-[560px]">
                 
-                <!-- Solution Header -->
                 <div class="flex items-center justify-between border-b border-earth-200 pb-4 mb-5">
                     <div class="flex items-center gap-3">
                         <div class="p-2.5 bg-earth-800 rounded-xl text-earth-200">
@@ -306,16 +279,14 @@
                     </div>
                 </div>
 
-                <!-- Empty State -->
                 <div id="empty-state" class="flex-1 flex flex-col items-center justify-center text-center p-8">
                     <div class="w-16 h-16 rounded-2xl bg-earth-100 border border-earth-300 flex items-center justify-center mb-4 text-earth-600 shadow-sm">
                         <i data-lucide="drafting-compass" class="w-8 h-8"></i>
                     </div>
                     <h3 class="text-base font-extrabold text-earth-900 mb-1">في انتظار إدخال السؤال الهندسي</h3>
-                    <p class="text-xs font-semibold text-earth-600 max-w-sm">ادخلي نص السؤال أو ارفعي صوّرة، وسيعرض لكِ AH ENGINEER خطة الحل الكاملة بأسلوب هندسي منظم.</p>
+                    <p class="text-xs font-semibold text-earth-600 max-w-sm">ادخلي نص السؤال أو أرفقي صوّرة، وسيعرض لكِ AH ENGINEER خطة الحل الكاملة بأسلوب هندسي منظم.</p>
                 </div>
 
-                <!-- Loading State -->
                 <div id="loading-state" class="hidden flex-1 flex flex-col items-center justify-center text-center p-8">
                     <div class="relative w-16 h-16 mb-5">
                         <div class="absolute inset-0 rounded-full border-4 border-earth-200"></div>
@@ -328,7 +299,6 @@
                     <p id="loading-message" class="text-xs font-semibold text-earth-600 max-w-sm">يتم معالجة البيانات، كتابة القوانين، والتعويض المباشر مع استخراج الوحدات الهندسية.</p>
                 </div>
 
-                <!-- Solution Result Output -->
                 <div id="solution-output" class="hidden flex-1 overflow-y-auto space-y-4 text-earth-900 pr-1">
                 </div>
 
@@ -338,6 +308,9 @@
     </main>
 
     <script>
+        // 🔑 حطي مفتاح الـ Gemini API مالتج المباشر هنا
+        const BUILTIN_API_KEY = "خلي_مفتاحج_هنا";
+
         let currentImageBase64 = null;
         let currentImageMimeType = null;
 
@@ -376,7 +349,21 @@
         function handleImageSelect(event) {
             const file = event.target.files[0];
             if (!file) return;
+            processImageFile(file);
+        }
 
+        function handlePaste(event) {
+            const items = (event.clipboardData || event.originalEvent.clipboardData).items;
+            for (let item of items) {
+                if (item.type.indexOf("image") === 0) {
+                    const file = item.getAsFile();
+                    processImageFile(file);
+                    break;
+                }
+            }
+        }
+
+        function processImageFile(file) {
             if (file.size > 10 * 1024 * 1024) {
                 alert("حجم الصورة كبير جداً. يرجى اختيار صورة أقل من 10 ميجابايت.");
                 return;
@@ -389,10 +376,9 @@
                 currentImageBase64 = fullBase64.split(',')[1];
 
                 document.getElementById('image-preview').src = fullBase64;
-                document.getElementById('image-filename').innerText = file.name;
+                document.getElementById('image-filename').innerText = file.name || "Pasted Image.png";
                 document.getElementById('image-filesize').innerText = (file.size / 1024).toFixed(1) + " KB";
 
-                document.getElementById('upload-placeholder').classList.add('hidden');
                 document.getElementById('image-preview-container').classList.remove('hidden');
             };
             reader.readAsDataURL(file);
@@ -403,7 +389,6 @@
             currentImageBase64 = null;
             currentImageMimeType = null;
             document.getElementById('image-input').value = '';
-            document.getElementById('upload-placeholder').classList.remove('hidden');
             document.getElementById('image-preview-container').classList.add('hidden');
         }
 
@@ -412,7 +397,7 @@
             const discipline = document.getElementById('discipline-select').value;
 
             if (!problemText && !currentImageBase64) {
-                alert("يرجى كتابة السؤال أو رفع صورة المسألة أولاً.");
+                alert("يرجى كتابة السؤال أو إرفاق صورة المسألة أولاً.");
                 return;
             }
 
@@ -428,19 +413,12 @@
 
 قواعد المحتوى:
 - استخرج المعطيات كما وردت في السؤال دون تغيير أي قيمة أو وحدة.
-- إذا كانت قيمة أو وحدة غير واضحة، اذكر ذلك صراحة ولا تخترع قيمة.
 - المطلوب يكون واضحاً ومحدداً.
 - اذكر القوانين المناسبة للمسألة فقط.
 - كل خطوة حسابية تكون مستقلة، مع شرح قصير ثم معادلة مستقلة.
-- كل معادلة رياضية يجب أن تكون بصيغة LaTeX داخل النص، بدون $$ في البداية أو النهاية؛ الواجهة ستضيف محددات المعادلة تلقائياً.
-- استخدم \\frac{البسط}{المقام} للكسور، و\\sqrt{} للجذور، والأسس مثل x^2.
+- كل معادلة رياضية يجب أن تكون بصيغة LaTeX داخل النص.
 - لا تستخدم \\text{} داخل المعادلات. اكتب الوحدات بصيغة بسيطة مثل W, kW, Pa, MPa, N.m, rpm, kg/s.
-- لا تستخدم Markdown أو HTML أو جداول أو backticks.
-- لا تكرر عنوان القسم داخل محتواه.
-- لا تضع أكثر من معادلة مختلفة داخل حقل equation واحد؛ إذا احتاجت الخطوة أكثر من معادلة فاجعلها خطوات منفصلة.
-- النتيجة النهائية: كل نتيجة مستقلة عن الأخرى، مع اسم النتيجة وقيمتها ووحدتها بوضوح.
-
-الهدف: إخراج هندسي نظيف جداً يمكن عرضه مباشرة في واجهة احترافية، بحيث تكون المعطيات والمطلوب والقوانين والخطوات والنتائج كلها مرتبة ولا يظهر أي كود أو LaTeX خام للمستخدم.`;
+- النتيجة النهائية: كل نتيجة مستقلة عن الأخرى، مع اسم النتيجة وقيمتها ووحدتها بوضوح.`;
 
             const userPromptText = `طلب حل مسألة هندسية عبر منصة AH ENGINEER:\n\n${problemText}`;
 
@@ -465,22 +443,13 @@
                         responseSchema: {
                             type: "OBJECT",
                             properties: {
-                                given: {
-                                    type: "ARRAY",
-                                    items: { type: "STRING" }
-                                },
-                                required: {
-                                    type: "ARRAY",
-                                    items: { type: "STRING" }
-                                },
+                                given: { type: "ARRAY", items: { type: "STRING" } },
+                                required: { type: "ARRAY", items: { type: "STRING" } },
                                 equations: {
                                     type: "ARRAY",
                                     items: {
                                         type: "OBJECT",
-                                        properties: {
-                                            name: { type: "STRING" },
-                                            equation: { type: "STRING" }
-                                        },
+                                        properties: { name: { type: "STRING" }, equation: { type: "STRING" } },
                                         required: ["name", "equation"]
                                     }
                                 },
@@ -488,10 +457,7 @@
                                     type: "ARRAY",
                                     items: {
                                         type: "OBJECT",
-                                        properties: {
-                                            explanation: { type: "STRING" },
-                                            equation: { type: "STRING" }
-                                        },
+                                        properties: { explanation: { type: "STRING" }, equation: { type: "STRING" } },
                                         required: ["explanation", "equation"]
                                     }
                                 },
@@ -499,11 +465,7 @@
                                     type: "ARRAY",
                                     items: {
                                         type: "OBJECT",
-                                        properties: {
-                                            name: { type: "STRING" },
-                                            equation: { type: "STRING" },
-                                            unit: { type: "STRING" }
-                                        },
+                                        properties: { name: { type: "STRING" }, equation: { type: "STRING" }, unit: { type: "STRING" } },
                                         required: ["name", "equation", "unit"]
                                     }
                                 }
@@ -512,9 +474,6 @@
                         }
                     }
                 };
-
-                // المفتاح الثابت المضمن للحل المباشر بدون مطالبت الزائر
-                const userSavedKey = localStorage.getItem('AH_ENGINEER_KEY') || "";
 
                 const models = [
                     { id: "gemini-3.8-flash", label: "Gemini 3.8 Flash" },
@@ -538,7 +497,7 @@
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
-                                'x-goog-api-key': userSavedKey
+                                'x-goog-api-key': BUILTIN_API_KEY
                             },
                             body: JSON.stringify(payload),
                             signal: controller.signal
@@ -548,12 +507,6 @@
 
                         return { response, result };
                     } catch (networkError) {
-                        if (networkError.name === 'AbortError') {
-                            return {
-                                response: { ok: false, status: 408 },
-                                result: { error: { message: `انتهت مهلة ${modelLabel} بعد 30 ثانية.` } }
-                            };
-                        }
                         return {
                             response: { ok: false, status: 0 },
                             result: { error: { message: 'تعذر الاتصال بخادم Gemini.' } }
@@ -579,14 +532,7 @@
                     const apiMessage = result?.error?.message || `تعذر الاتصال بالخدمة (رمز الخطأ: ${status})`;
                     lastError = new Error(apiMessage);
 
-                    const shouldFallback = (status === 503 || status === 429 || status === 408 || status === 0);
-
-                    if (shouldFallback && i < models.length - 1) {
-                        if (loadingMessage) {
-                            loadingMessage.textContent = status === 408
-                                ? `انتهت مهلة ${model.label}. جارٍ تجربة نموذج أسرع...`
-                                : `الخادم مشغول مؤقتاً. جارٍ تجربة نموذج بديل...`;
-                        }
+                    if (i < models.length - 1) {
                         await new Promise(resolve => setTimeout(resolve, 700));
                         continue;
                     }
@@ -599,18 +545,7 @@
                 }
 
                 const textSolution = finalResult.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim();
-
-                if (!textSolution) {
-                    const reason = finalResult?.candidates?.[0]?.finishReason;
-                    throw new Error(reason ? `لم يتم إنشاء الحل. سبب الإنهاء: ${reason}` : "لم يتم تلقي إجابة صحيحة من Gemini.");
-                }
-
-                let structuredSolution;
-                try {
-                    structuredSolution = JSON.parse(textSolution);
-                } catch (jsonError) {
-                    throw new Error("وصلت الإجابة بصيغة غير مرتبة من Gemini. أعيدي المحاولة مرة أخرى.");
-                }
+                const structuredSolution = JSON.parse(textSolution);
 
                 renderSolution(structuredSolution);
 
@@ -651,21 +586,18 @@
 
             let html = '<div class="solution-prose max-w-none text-sm leading-relaxed text-earth-900 font-medium">';
 
-            // 1. Given
             if (given.length) {
                 html += makeSection(1, sectionTitles[1], sectionIcons[1],
                     given.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
                 );
             }
 
-            // 2. Required
             if (required.length) {
                 html += makeSection(2, sectionTitles[2], sectionIcons[2],
                     required.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
                 );
             }
 
-            // 3. Governing equations
             if (equations.length) {
                 const body = equations.map(item => `
                     <div class="formula-row">
@@ -675,7 +607,6 @@
                 html += makeSection(3, sectionTitles[3], sectionIcons[3], body);
             }
 
-            // 4. Steps
             if (steps.length) {
                 const body = steps.map((item, index) => `
                     <div class="step-card">
@@ -688,7 +619,6 @@
                 html += makeSection(4, sectionTitles[4], sectionIcons[4], body);
             }
 
-            // 5. Final answers
             if (finalResults.length) {
                 const body = finalResults.map(item => `
                     <div class="final-result">
@@ -697,10 +627,6 @@
                         ${item.unit ? `<div class="final-unit">Unit: ${formatSafeText(item.unit)}</div>` : ''}
                     </div>`).join('');
                 html += makeSection(5, sectionTitles[5], sectionIcons[5], body);
-            }
-
-            if (!given.length && !required.length && !equations.length && !steps.length && !finalResults.length) {
-                throw new Error('لم يتم إنشاء محتوى منظم للحل. أعيدي المحاولة مرة أخرى.');
             }
 
             html += '</div>';
