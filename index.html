@@ -163,13 +163,6 @@
             border-top: 1px solid #d0ba9d;
             max-width: 34rem;
         }
-        .final-answer-box {
-            background: #f4ede2;
-            border: 2px solid #b1906a;
-            border-radius: 16px;
-            padding: .8rem 1rem;
-            margin-top: .6rem;
-        }
     </style>
 </head>
 <body class="min-h-full flex flex-col bg-[#f6f2ec] text-earth-900 selection:bg-earth-500 selection:text-white">
@@ -190,11 +183,10 @@
                 </div>
             </div>
 
-            <!-- API Key Settings Button -->
-            <button onclick="toggleKeyModal()" class="px-3.5 py-2 rounded-xl bg-earth-800 border border-earth-700 hover:border-earth-400 text-earth-200 text-xs font-bold flex items-center gap-2 transition hover:bg-earth-700">
-                <i data-lucide="key" class="w-4 h-4 text-earth-300"></i>
-                <span id="key-status-text">إعداد مفتاح API</span>
-            </button>
+            <div class="flex items-center gap-2 text-xs font-bold text-earth-300 bg-earth-800 px-3 py-1.5 rounded-xl border border-earth-700">
+                <i data-lucide="sparkles" class="w-4 h-4 text-earth-400"></i>
+                <span>جاهز للحل المباشر</span>
+            </div>
         </div>
     </header>
 
@@ -345,34 +337,6 @@
 
     </main>
 
-    <!-- Key Config Modal -->
-    <div id="key-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-        <div class="bg-earth-50 border border-earth-300 rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
-            <button onclick="toggleKeyModal()" class="absolute top-4 left-4 p-1.5 bg-earth-200 text-earth-800 rounded-lg hover:bg-earth-300 transition">
-                <i data-lucide="x" class="w-4 h-4"></i>
-            </button>
-            <div class="flex items-center gap-3 mb-4">
-                <div class="p-2.5 bg-earth-800 rounded-xl text-earth-200">
-                    <i data-lucide="key" class="w-5 h-5"></i>
-                </div>
-                <div>
-                    <h3 class="text-base font-bold text-earth-900">مفتاح الذكاء الاصطناعي (Gemini API)</h3>
-                    <p class="text-xs font-semibold text-earth-600">أدخلي مفتاح Gemini API ليعمل المساعد</p>
-                </div>
-            </div>
-            
-            <p class="text-xs text-earth-700 font-semibold leading-relaxed mb-4">
-                يُحفظ المفتاح محلياً في هذا المتصفح فقط. إذا لم يوجد مفتاح محفوظ، سيطلبه الموقع قبل إرسال السؤال.
-            </p>
-
-            <input type="password" id="api-key-input" placeholder="AIzaSy..." class="w-full bg-white border border-earth-300 rounded-xl px-4 py-3 text-xs text-earth-900 placeholder-earth-400 focus:outline-none focus:border-earth-600 mb-4 font-mono">
-
-            <button onclick="saveApiKey()" class="w-full py-3 bg-earth-800 hover:bg-earth-900 text-earth-50 font-bold rounded-xl text-xs transition shadow-md">
-                حفظ المفتاح والتطبيق
-            </button>
-        </div>
-    </div>
-
     <script>
         let currentImageBase64 = null;
         let currentImageMimeType = null;
@@ -398,34 +362,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             lucide.createIcons();
-            checkSavedKey();
         });
-
-        function checkSavedKey() {
-            const key = localStorage.getItem('AH_ENGINEER_KEY');
-            const statusEl = document.getElementById('key-status-text');
-            if (key) {
-                statusEl.innerText = "مفتاح API مفعّل";
-                document.getElementById('api-key-input').value = key;
-            } else {
-                statusEl.innerText = "إعداد مفتاح API";
-            }
-        }
-
-        function toggleKeyModal() {
-            document.getElementById('key-modal').classList.toggle('hidden');
-        }
-
-        function saveApiKey() {
-            const key = document.getElementById('api-key-input').value.trim();
-            if (key) {
-                localStorage.setItem('AH_ENGINEER_KEY', key);
-            } else {
-                localStorage.removeItem('AH_ENGINEER_KEY');
-            }
-            checkSavedKey();
-            toggleKeyModal();
-        }
 
         function loadSample(key) {
             const sample = SAMPLES[key];
@@ -496,8 +433,8 @@
 - اذكر القوانين المناسبة للمسألة فقط.
 - كل خطوة حسابية تكون مستقلة، مع شرح قصير ثم معادلة مستقلة.
 - كل معادلة رياضية يجب أن تكون بصيغة LaTeX داخل النص، بدون $$ في البداية أو النهاية؛ الواجهة ستضيف محددات المعادلة تلقائياً.
-- استخدم \frac{البسط}{المقام} للكسور، و\sqrt{} للجذور، والأسس مثل x^2.
-- لا تستخدم \text{} داخل المعادلات. اكتب الوحدات بصيغة بسيطة مثل W, kW, Pa, MPa, N.m, rpm, kg/s.
+- استخدم \\frac{البسط}{المقام} للكسور، و\\sqrt{} للجذور، والأسس مثل x^2.
+- لا تستخدم \\text{} داخل المعادلات. اكتب الوحدات بصيغة بسيطة مثل W, kW, Pa, MPa, N.m, rpm, kg/s.
 - لا تستخدم Markdown أو HTML أو جداول أو backticks.
 - لا تكرر عنوان القسم داخل محتواه.
 - لا تضع أكثر من معادلة مختلفة داخل حقل equation واحد؛ إذا احتاجت الخطوة أكثر من معادلة فاجعلها خطوات منفصلة.
@@ -576,15 +513,9 @@
                     }
                 };
 
+                // المفتاح الثابت المضمن للحل المباشر بدون مطالبت الزائر
                 const userSavedKey = localStorage.getItem('AH_ENGINEER_KEY') || "";
 
-                if (!userSavedKey) {
-                    toggleKeyModal();
-                    throw new Error("لم يتم إدخال مفتاح Gemini API. أدخلي المفتاح ثم اضغطي حفظ المفتاح والتطبيق، وبعدها أعيدي المحاولة.");
-                }
-
-                // نستخدم 3.8 Flash أولاً، وإذا كان الخادم مشغولاً (503/429) ننتقل تلقائياً إلى نموذج Flash مستقر آخر.
-                // هذا يمنع بقاء المؤشر يدور بينما Gemini يرفض الطلب بسبب ضغط مؤقت.
                 const models = [
                     { id: "gemini-3.8-flash", label: "Gemini 3.8 Flash" },
                     { id: "gemini-3.6-flash", label: "Gemini 3.6 Flash" },
@@ -648,11 +579,6 @@
                     const apiMessage = result?.error?.message || `تعذر الاتصال بالخدمة (رمز الخطأ: ${status})`;
                     lastError = new Error(apiMessage);
 
-                    // 503 = ضغط/عدم توفر مؤقت، و429 = تجاوز معدل/سعة الطلبات.
-                    // في هاتين الحالتين ننتقل مباشرة إلى النموذج التالي بدلاً من الانتظار طويلاً.
-                    // 503/429 = الخادم مشغول أو السعة محدودة.
-                    // 408 = انتهت مهلة الاتصال محلياً؛ لا نوقف التطبيق، بل نجرب النموذج التالي.
-                    // 0 = فشل اتصال شبكي؛ نجرب نموذجاً آخر قبل إظهار الخطأ النهائي.
                     const shouldFallback = (status === 503 || status === 429 || status === 408 || status === 0);
 
                     if (shouldFallback && i < models.length - 1) {
@@ -695,7 +621,7 @@
                     <div class="bg-red-50 border border-red-200 text-red-900 rounded-2xl p-5 text-center font-bold">
                         <i data-lucide="alert-octagon" class="w-8 h-8 text-red-600 mx-auto mb-2"></i>
                         <p class="text-sm">حدث خطأ أثناء معالجة المسألة</p>
-                        <p class="text-xs text-red-700 font-semibold mt-1 break-words">${escapeHtml(err.message || "يرجى التأكد من الاتصال أو مفتاح API.")}</p>
+                        <p class="text-xs text-red-700 font-semibold mt-1 break-words">${escapeHtml(err.message || "يرجى التأكد من الاتصال بالأنتريت.")}</p>
                     </div>
                 `;
                 document.getElementById('solution-output').classList.remove('hidden');
@@ -803,15 +729,10 @@
         }
 
         function safeMath(value) {
-            // MathJax receives only the equation itself; HTML is escaped to prevent markup from leaking into the equation.
             return escapeHtml(String(value ?? '').trim())
                 .replace(/&amp;/g, '&')
                 .replace(/&lt;/g, '<')
                 .replace(/&gt;/g, '>');
-        }
-
-        function formatPlainBlock(escapedText) {
-            return escapedText.split('\n').map(x => x.trim()).filter(Boolean).map(x => `<div class="solution-line">${x}</div>`).join('');
         }
 
         function typesetSolution(container) {
