@@ -219,10 +219,8 @@
                 <!-- Unified Input Area Box -->
                 <div class="relative bg-white border border-earth-300 rounded-xl p-3 flex flex-col gap-2 focus-within:border-earth-600 focus-within:ring-1 focus-within:ring-earth-600 transition shadow-sm">
                     
-                    <!-- Text Area -->
                     <textarea id="problem-text" rows="5" placeholder="اكتبي نص السؤال هنا، أو الصقي صورة المسألة مباشرة (Ctrl+V)..." class="w-full bg-transparent text-sm font-semibold text-earth-900 placeholder-earth-400 focus:outline-none resize-none" onpaste="handlePaste(event)"></textarea>
 
-                    <!-- Image Preview Badge (If attached) -->
                     <div id="image-preview-container" class="hidden relative flex items-center justify-between bg-earth-100 border border-earth-300 rounded-lg p-2 mt-1">
                         <div class="flex items-center gap-2.5 overflow-hidden">
                             <img id="image-preview" src="" alt="Preview" class="w-10 h-10 object-cover rounded-md border border-earth-300">
@@ -236,7 +234,6 @@
                         </button>
                     </div>
 
-                    <!-- Bottom Input Toolbar -->
                     <div class="flex items-center justify-between border-t border-earth-200 pt-2 mt-1">
                         <input type="file" id="image-input" accept="image/*" class="hidden" onchange="handleImageSelect(event)">
                         
@@ -249,7 +246,6 @@
                     </div>
                 </div>
 
-                <!-- Solve Button -->
                 <button id="solve-btn" onclick="solveProblem()" class="w-full mt-1 py-4 px-4 bg-earth-800 hover:bg-earth-900 text-earth-50 font-black text-sm rounded-xl shadow-lg shadow-earth-900/20 active:scale-[0.99] transition flex items-center justify-center gap-2.5 tracking-wide">
                     <i data-lucide="calculator" class="w-5 h-5 text-earth-300"></i>
                     <span>حـل المـسـألـة الآن (AH ENGINEER)</span>
@@ -308,7 +304,7 @@
     </main>
 
     <script>
-        // 🔑 حطي مفتاح الـ Gemini API مالتج المباشر هنا
+        // 🔑 مفتاح Gemini API المباشر والمدمج
         const BUILTIN_API_KEY = "AQ.Ab8RN6Jc8cHC-hx-d3NQcghcVQ5tZg96ekJprGWWQj_BLYdPeg";
 
         let currentImageBase64 = null;
@@ -409,16 +405,7 @@
             const systemPrompt = `أنت منصة AH ENGINEER التعليمية والهندسية المتخصصة.
 التخصص الهندسي الحالي: ${discipline}.
 
-مهمتك: حل المسألة الهندسية بدقة، وإرجاع النتيجة في بنية JSON فقط حسب المخطط المطلوب من النظام. لا تكتب أي مقدمة أو خاتمة خارج JSON.
-
-قواعد المحتوى:
-- استخرج المعطيات كما وردت في السؤال دون تغيير أي قيمة أو وحدة.
-- المطلوب يكون واضحاً ومحدداً.
-- اذكر القوانين المناسبة للمسألة فقط.
-- كل خطوة حسابية تكون مستقلة، مع شرح قصير ثم معادلة مستقلة.
-- كل معادلة رياضية يجب أن تكون بصيغة LaTeX داخل النص.
-- لا تستخدم \\text{} داخل المعادلات. اكتب الوحدات بصيغة بسيطة مثل W, kW, Pa, MPa, N.m, rpm, kg/s.
-- النتيجة النهائية: كل نتيجة مستقلة عن الأخرى، مع اسم النتيجة وقيمتها ووحدتها بوضوح.`;
+مهمتك: حل المسألة الهندسية بدقة، وإرجاع النتيجة بأسلوب منظم وشامل باللغة العربية مع صياغة معادلات LaTeX المصحوبة بالشرح والخطوات والوحدات النهائية.`;
 
             const userPromptText = `طلب حل مسألة هندسية عبر منصة AH ENGINEER:\n\n${problemText}`;
 
@@ -435,119 +422,30 @@
 
                 const payload = {
                     contents: [{ role: "user", parts: parts }],
-                    systemInstruction: { parts: [{ text: systemPrompt }] },
-                    generationConfig: {
-                        thinkingConfig: { thinkingLevel: "low" },
-                        maxOutputTokens: 3000,
-                        responseMimeType: "application/json",
-                        responseSchema: {
-                            type: "OBJECT",
-                            properties: {
-                                given: { type: "ARRAY", items: { type: "STRING" } },
-                                required: { type: "ARRAY", items: { type: "STRING" } },
-                                equations: {
-                                    type: "ARRAY",
-                                    items: {
-                                        type: "OBJECT",
-                                        properties: { name: { type: "STRING" }, equation: { type: "STRING" } },
-                                        required: ["name", "equation"]
-                                    }
-                                },
-                                steps: {
-                                    type: "ARRAY",
-                                    items: {
-                                        type: "OBJECT",
-                                        properties: { explanation: { type: "STRING" }, equation: { type: "STRING" } },
-                                        required: ["explanation", "equation"]
-                                    }
-                                },
-                                final: {
-                                    type: "ARRAY",
-                                    items: {
-                                        type: "OBJECT",
-                                        properties: { name: { type: "STRING" }, equation: { type: "STRING" }, unit: { type: "STRING" } },
-                                        required: ["name", "equation", "unit"]
-                                    }
-                                }
-                            },
-                            required: ["given", "required", "equations", "steps", "final"]
-                        }
-                    }
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
                 };
 
-                const models = [
-                    { id: "gemini-3.8-flash", label: "Gemini 3.8 Flash" },
-                    { id: "gemini-3.6-flash", label: "Gemini 3.6 Flash" },
-                    { id: "gemini-3.5-flash-lite", label: "Gemini 3.5 Flash-Lite" }
-                ];
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${BUILTIN_API_KEY}`;
 
-                const loadingMessage = document.getElementById('loading-message');
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
 
-                async function requestGemini(modelId, modelLabel) {
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent`;
-                    const controller = new AbortController();
-                    const timeoutId = setTimeout(() => controller.abort(), 30000);
+                const result = await response.json();
 
-                    if (loadingMessage) {
-                        loadingMessage.textContent = `جاري الحل بواسطة ${modelLabel}...`;
-                    }
-
-                    try {
-                        const response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'x-goog-api-key': BUILTIN_API_KEY
-                            },
-                            body: JSON.stringify(payload),
-                            signal: controller.signal
-                        });
-
-                        const result = await response.json().catch(() => ({}));
-
-                        return { response, result };
-                    } catch (networkError) {
-                        return {
-                            response: { ok: false, status: 0 },
-                            result: { error: { message: 'تعذر الاتصال بخادم Gemini.' } }
-                        };
-                    } finally {
-                        clearTimeout(timeoutId);
-                    }
+                if (!response.ok) {
+                    throw new Error(result?.error?.message || `خطأ في الخدمة: ${response.status}`);
                 }
 
-                let finalResult = null;
-                let lastError = null;
+                const textSolution = result.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim();
 
-                for (let i = 0; i < models.length; i++) {
-                    const model = models[i];
-                    const { response, result } = await requestGemini(model.id, model.label);
-
-                    if (response.ok) {
-                        finalResult = result;
-                        break;
-                    }
-
-                    const status = response.status;
-                    const apiMessage = result?.error?.message || `تعذر الاتصال بالخدمة (رمز الخطأ: ${status})`;
-                    lastError = new Error(apiMessage);
-
-                    if (i < models.length - 1) {
-                        await new Promise(resolve => setTimeout(resolve, 700));
-                        continue;
-                    }
-
-                    throw lastError;
+                if (!textSolution) {
+                    throw new Error("لم يتم إرجاع إجابة من الذكاء الاصطناعي.");
                 }
 
-                if (!finalResult) {
-                    throw lastError || new Error('تعذر الحصول على حل من Gemini.');
-                }
-
-                const textSolution = finalResult.candidates?.[0]?.content?.parts?.map(p => p.text || "").join("").trim();
-                const structuredSolution = JSON.parse(textSolution);
-
-                renderSolution(structuredSolution);
+                renderDirectSolution(textSolution);
 
             } catch (err) {
                 console.error("Error solving problem:", err);
@@ -564,101 +462,22 @@
             }
         }
 
-        function renderSolution(solution) {
+        function renderDirectSolution(text) {
             document.getElementById('loading-state').classList.add('hidden');
             const outputContainer = document.getElementById('solution-output');
 
-            const data = solution || {};
-            const given = Array.isArray(data.given) ? data.given : [];
-            const required = Array.isArray(data.required) ? data.required : [];
-            const equations = Array.isArray(data.equations) ? data.equations : [];
-            const steps = Array.isArray(data.steps) ? data.steps : [];
-            const finalResults = Array.isArray(data.final) ? data.final : [];
+            let formatted = escapeHtml(text)
+                .replace(/\*\*(.*?)\*\*/g, '<strong class="text-earth-950 font-extrabold">$1</strong>')
+                .replace(/\n/g, '<br>');
 
-            const sectionTitles = {
-                1: 'المعطيات (Given Parameters)',
-                2: 'المطلوب (Required)',
-                3: 'القوانين الحاكمة (Governing Equations)',
-                4: 'خطوات الحل والتعويض (Step-by-Step Substitution)',
-                5: 'النتيجة النهائية (Final Answer & Units)'
-            };
-            const sectionIcons = {1:'📌', 2:'🎯', 3:'📐', 4:'📝', 5:'🏆'};
-
-            let html = '<div class="solution-prose max-w-none text-sm leading-relaxed text-earth-900 font-medium">';
-
-            if (given.length) {
-                html += makeSection(1, sectionTitles[1], sectionIcons[1],
-                    given.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
-                );
-            }
-
-            if (required.length) {
-                html += makeSection(2, sectionTitles[2], sectionIcons[2],
-                    required.map(item => `<div class="solution-item"><span class="item-dot">•</span><span>${formatSafeText(item)}</span></div>`).join('')
-                );
-            }
-
-            if (equations.length) {
-                const body = equations.map(item => `
-                    <div class="formula-row">
-                        <div class="formula-name">${formatSafeText(item.name || '')}</div>
-                        <div class="equation-box">\\[${safeMath(item.equation || '')}\\]</div>
-                    </div>`).join('');
-                html += makeSection(3, sectionTitles[3], sectionIcons[3], body);
-            }
-
-            if (steps.length) {
-                const body = steps.map((item, index) => `
-                    <div class="step-card">
-                        <div class="step-number">${index + 1}</div>
-                        <div class="step-content">
-                            <div class="step-explanation">${formatSafeText(item.explanation || '')}</div>
-                            <div class="equation-box">\\[${safeMath(item.equation || '')}\\]</div>
-                        </div>
-                    </div>`).join('');
-                html += makeSection(4, sectionTitles[4], sectionIcons[4], body);
-            }
-
-            if (finalResults.length) {
-                const body = finalResults.map(item => `
-                    <div class="final-result">
-                        <div class="final-result-name">${formatSafeText(item.name || 'النتيجة')}</div>
-                        <div class="equation-box final-equation">\\[${safeMath(item.equation || '')}\\]</div>
-                        ${item.unit ? `<div class="final-unit">Unit: ${formatSafeText(item.unit)}</div>` : ''}
-                    </div>`).join('');
-                html += makeSection(5, sectionTitles[5], sectionIcons[5], body);
-            }
-
-            html += '</div>';
+            let html = `<div class="solution-prose max-w-none text-sm leading-relaxed text-earth-900 font-medium bg-white p-5 rounded-2xl border border-earth-300 shadow-sm">${formatted}</div>`;
             html += `<div class="success-message" role="status">خلصنا، وعاش العراق :)</div>`;
+
             outputContainer.innerHTML = html;
             outputContainer.classList.remove('hidden');
             document.getElementById('solution-actions').classList.remove('hidden');
             lucide.createIcons();
             typesetSolution(outputContainer);
-        }
-
-        function makeSection(number, title, icon, body) {
-            return `<section class="solution-section" data-section="${number}">
-                <div class="solution-section-title">
-                    <span class="section-number">${number}</span>
-                    <span>${icon} ${title}</span>
-                </div>
-                <div class="solution-section-body">${body}</div>
-            </section>`;
-        }
-
-        function formatSafeText(value) {
-            const text = String(value ?? '').trim();
-            if (!text) return '';
-            return escapeHtml(text).replace(/\*\*(.*?)\*\*/g, '<strong class="text-earth-950 font-extrabold">$1</strong>');
-        }
-
-        function safeMath(value) {
-            return escapeHtml(String(value ?? '').trim())
-                .replace(/&amp;/g, '&')
-                .replace(/&lt;/g, '<')
-                .replace(/&gt;/g, '>');
         }
 
         function typesetSolution(container) {
